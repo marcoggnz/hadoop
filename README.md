@@ -25,3 +25,7 @@ El proyecto consiste en tres tareas. El desarrollo de cada una de ellas se encue
 * [Tarea_3.md](Tarea3.md)
 
 > **Note:** Este proyecto ha sido desarrollado en una máquina virtual de Cloudewra de forma local, tratandose de un cluster preconfigurado.
+
+## Referencias
+
+...
