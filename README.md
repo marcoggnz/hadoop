@@ -11,7 +11,9 @@ Este proyecto pone en práctica los conceptos y nociones básicas de Hadoop medi
 ## Introducción
 
 En la actualidad, la extracción de información y el análisis de datos son fundamentales para la toma de decisiones en los negocios. Sin embargo, la cantidad de datos generados cada día es enorme, lo que hace que el procesamiento y análisis de estos datos sea una tarea difícil y costosa. Hadoop es una tecnología que ha revolucionado la forma en que las empresas extraen información y analizan datos.
+
 Hadoop es un framework de procesamiento distribuido de código abierto que permite el almacenamiento y procesamiento de grandes cantidades de datos en clusters de computadoras. Con Hadoop, es posible procesar grandes conjuntos de datos en paralelo, lo que reduce el tiempo de procesamiento y el costo. Además, Hadoop utiliza un sistema de archivos distribuidos que permite el almacenamiento de datos de manera eficiente.
+
 Uno de los casos de uso más populares de Hadoop es el procesamiento de datos de usuario para implementar sistemas de recomendación en empresas como Netflix y Spotify. Con Hadoop, es posible procesar de manera eficiente los gustos de los usuarios, lo que permite a estas empresas proporcionar recomendaciones precisas y personalizadas a sus usuarios…
 
 ## Planteamiento de Negocio
