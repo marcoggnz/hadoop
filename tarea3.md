@@ -14,14 +14,10 @@ Para cada una de estas tareas indica qué posibles herramientas del ecosistema H
 
 Las herramientas recomendadas son Hive (con HiveServer2 + JDBC/ODBC) e Impala.
 
-| Herramienta | Ventajas                                                                | Desventajas                                           |
-|-------------|---------------------------------------------------------------------------------------------------------------------------------|
-| Hive        | * Gran compatibilidad (JDBC/ODBC)                                       | * Latencia alta para consultas interactivas (minutos) |
-|             | * Optimizado para consultas analíticas grandes                          | * No óptimo para dashboards interactivos frecuentes   |
-|             | * Bajo coste relativo en RAM                                            |                                                       |
-| Impala      | * Consultas interactivas rápidas (segundos)                             | * Alto consumo de RAM                                 |
-|             | * Muy buena integración con herramientas BI modernas como MicroStrategy | * Necesita recursos dedicados (memoria elevada)       |
-|             | * Experiencia de usuario interactiva                                    | * Complejidad en gestión de clusters                  |
+| Herramienta | Ventajas                                                                                                            | Desventajas                                                        |
+|-------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| **Hive**    | - Gran compatibilidad (JDBC/ODBC)<br>- Optimizado para consultas analíticas grandes<br>- Bajo coste relativo en RAM | - Latencia alta para consultas interactivas (minutos)<br>- No óptimo para dashboards interactivos frecuentes |
+| **Impala**  | - Consultas interactivas rápidas (segundos)<br>- Buena integración con herramientas BI modernas como MicroStrategy<br>- Experiencia interactiva | - Alto consumo de RAM<br>- Necesita recursos dedicados (alta memoria)<br>- Complejidad en gestión de clusters |
 
 Por tanto, Impala se utilizaría para dashboards interactivos o tiempo real y Hive si las consultas no fueranen tiempo real o se de el caso de que haya que optimizar recursos económicos.
 
