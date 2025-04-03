@@ -8,4 +8,10 @@
 
 Para cada una de estas tareas indica qué posibles herramientas del ecosistema Hadoop aplicarían por requisitos de casuística teniendo en cuenta las ventajas e inconvenientes de cada una de ellas (por ejemplo, uso de Impala consume mucha RAM).</strong>
 
-jbagjkerfag
+##
+
+## Herramientas de Business Intelligence
+
+Las herramientas recomendadas son Hive (con HiveServer2 + JDBC/ODBC) e Impala.
+
+
