@@ -28,4 +28,4 @@ El proyecto consiste en tres tareas. El desarrollo de cada una de ellas se encue
 
 ## Referencias
 
-...
+* https://www.databricks.com/glossary/hadoop-distributed-file-system-hdfs
