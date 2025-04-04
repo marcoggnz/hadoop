@@ -20,9 +20,9 @@ Uno de los casos de uso más populares de Hadoop es el procesamiento de datos de
 
 El objetivo principal de este proyecto es crear el departamento de analítica desde cero. Este departamento tiene como función principal la extracción y análisis de los datos necesarios para generar insights que permitan a la mesa ejecutiva la definición de la estrategia de la startup.
 El proyecto consiste en tres tareas. El desarrollo de cada una de ellas se encuentra detallado a continuación en los siguientes archivos:
-* [Tarea_1](tarea1.md)
-* [Tarea_2](tarea2.md)
-* [Tarea_3](tarea3.md)
+* [Tarea 1](tarea1.md)
+* [Tarea 2](tarea2.md)
+* [Tarea 3](tarea3.md)
 
 > **Note:** Este proyecto ha sido desarrollado en una máquina virtual de Cloudewra de forma local, tratandose de un cluster preconfigurado.
 
