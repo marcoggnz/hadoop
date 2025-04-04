@@ -30,3 +30,5 @@ El proyecto consiste en tres tareas. El desarrollo de cada una de ellas se encue
 
 * https://www.databricks.com/glossary/hadoop-distributed-file-system-hdfs
 * https://www.projectpro.io/article/impala-vs-hive-difference-between-sql-on-hadoop-components/180
+* https://phoenix.apache.org/
+* Book "Understanding ETL (Data pipelines for modern data architectures)" by O’Reilly
