@@ -67,7 +67,7 @@ Cada máquina tiene 22 discos dfe 2 TB, o lo que es lo mismo, existen 44 TB disp
 Dividiendo el volumen total entre la capacidad útil por máquina de obtiene el número teórico de máquinas necesarias:
 161.7 TB / 39.6 TB ≈ 4.08
 
-Como debemos ser conservadores y, por tanto, redondea hacia arriba para asegurarnos de que se cumplen las necesidades, <strong>el número de máquinas necesarias es 5</strong>. De esta forma se cumple con el almacenamiento del primer año.
+Como debemos ser conservadores y, por tanto, redondea hacia arriba para asegurarnos de que se cumplen las necesidades, el número de máquinas necesarias es 5. Estas máquinas irían destinadas a almacenamiento de datos, por tanto, se tratarían de DataNodes. Sin embargo, sería necesario contar con una máquina adicional como NameNode, siendo necesario, por tanto, <strong>6 máquinas</strong> para garantizar alta disponibilidad. De esta forma se cumple con el almacenamiento del primer año.
 
 ## Conclusiones
 Hadoop no solo almacena los datos, también los procesa distribuida y paralelamente. El factor de replicación garantiza tolerancia a fallos, pero, por otro lado, triplica el almacenamiento necesario. Además, se requiere espacio adicional para archivos temporales, resultados intermedios, logs, y otros procesos de MapReduce. Tener varias máquinas permite escalar el procesamiento también en paralelo, siendo clave para una analítica eficiente.
