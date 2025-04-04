@@ -29,3 +29,4 @@ El proyecto consiste en tres tareas. El desarrollo de cada una de ellas se encue
 ## Referencias
 
 * https://www.databricks.com/glossary/hadoop-distributed-file-system-hdfs
+* https://www.projectpro.io/article/impala-vs-hive-difference-between-sql-on-hadoop-components/180
