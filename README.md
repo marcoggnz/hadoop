@@ -1,6 +1,6 @@
 # hadoop
 
-Este proyecto pone en práctica los conceptos y nociones básicas de Hadoop mediante tres tareas, dos de ellas teóricas y una práctica. El objetivo es realizar un análisis del mercado actual de películas para una startup y determinar insights aprovechando un dataset público de [MovieLens](https://grouplens.org/datasets/movielens/).
+Este proyecto pone en práctica los conceptos y nociones básicas de Hadoop mediante tres tareas, dos de ellas teóricas y una práctica. El objetivo es realizar un análisis del mercado actual de películas para una startup y determinar insights aprovechando un dataset público de [MovieLens](https://grouplens.org/datasets/movielens/). Este proyecto es parte del Máster en Big Data Architecture & Engineering de Datahack.
 
 ## Tecnologías utilizadas
 * Hadoop
