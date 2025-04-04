@@ -198,30 +198,26 @@ LIMIT 3;
 
 Las 3 peores películas según las calificaciones son Hillbillys in a Haunted House, Elstree Calling y Little Indian, Big City, todas ellas con una valoración de 1.0.
 
-<strong>4. ¿Hay alguna profesión en la que deberíamos enfocar nuestros esfuerzos en publicidad? Por qué?</strong>
+<strong>4. ¿Hay alguna profesión en la que deberíamos enfocar nuestros esfuerzos en publicidad? ¿Por qué?</strong>
 
 Consulta utilizada:
 
 ```
-SELECT m.MovieID, m.Title, m.Genres, COUNT(r.MovieID) AS num_reviews
-FROM movies m
-JOIN ratings r ON m.MovieID = r.MovieID
-GROUP BY m.MovieID, m.Title, m.Genres
-ORDER BY num_reviews DESC
-LIMIT 1;
+SELECT u.Occupation, COUNT(r.UserID) AS num_ratings
+FROM users u
+JOIN ratings r ON u.UserID = r.UserID
+GROUP BY u.Occupation
+ORDER BY num_ratings DESC;
 ```
+
+
 
 <strong>5. Se te ocurre algún otro insight valioso que pudiéramos extraer de los datos procesados? Cómo?</strong>
 
 Consulta utilizada:
 
 ```
-SELECT m.MovieID, m.Title, m.Genres, COUNT(r.MovieID) AS num_reviews
-FROM movies m
-JOIN ratings r ON m.MovieID = r.MovieID
-GROUP BY m.MovieID, m.Title, m.Genres
-ORDER BY num_reviews DESC
-LIMIT 1;
+...
 ```
 
 ### Ejercicio 2
