@@ -66,13 +66,7 @@ Los tres archivos de datos tienen dos puntos (::) como delimitadores de columnas
 A continuación, se debe mover el fichero <code> movies.dat</code> del sistema de ficheros local a Hadoop mediante el comando:
 
 ```
-!hadoop fs -put /home/cloudera/dh-course/dataset-hadoop/movies.dat /user/hive/warehouse/ex1.db/movies;
-```
-
-Se puede asegurar que la copia se ha realizado correctamente:
-
-```
-!dfs -ls /user/hive/warehouse/ex1.db/movies;
+hdfs dfs -put /home/cloudera/dh-course/dataset-hadoop/movies.dat /user/cloudera/movies/
 ```
 
 ### Tabla Users
@@ -94,7 +88,7 @@ WITH SERDEPROPERTIES ("field.delim"="::");
 Esta tabla se encuentra en la ruta <code>/user/hive/warehouse/ex1.db</code>. A continuación, se copia el archivo que contiene los datosa del entorno Linux al entorno Hive:
 
 ```
-!hadoop fs -put /home/cloudera/dh-course/dataset-exercise1/users.dat /user/hive/warehouse/exercise1.db/users;
+hdfs dfs -put /home/cloudera/dh-course/dataset-hadoop/users.dat /user/cloudera/users/
 ```
 
 ### Tabla Ratings
@@ -115,7 +109,15 @@ WITH SERDEPROPERTIES ("field.delim"="::");
 Esta tabla se almacena en la misma ruta que el resto de tablas <code>/user/hive/warehouse/ex1.db</code>. Una vez creada esta tabla, se cargan los datos del fichero que contiene las calificaciones desde el entorno local al entorno Hive:
 
 ```
-!hadoop fs -put /home/cloudera/dh-course/dataset-exercise1/ratings.dat /user/hive/warehouse/exercise1.db/ratings;
+hdfs dfs -put /home/cloudera/dh-course/dataset-hadoop/ratings.dat /user/cloudera/ratings/
+```
+
+Para terminar la preparación, se deben cargar los datos a las tablas de Hive mediante los siguientes comandos:
+
+```
+LOAD DATA INPATH '/user/cloudera/movies/movies.dat' INTO TABLE movies;
+LOAD DATA INPATH '/user/cloudera/users/users.dat' INTO TABLE users;
+LOAD DATA INPATH '/user/cloudera/ratings/ratings.dat' INTO TABLE ratings;
 ```
 
 Una simple consulta permite comprobar que los datos están guardados correctamente:
