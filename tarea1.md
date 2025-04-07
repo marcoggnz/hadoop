@@ -184,56 +184,69 @@ Los 10 ID de usuario que han publicado mayor número de reviews son 4169, 1680, 
 <strong>3. ¿Cuáles son las tres mejores películas según los scores? Y las tres peores?</strong>
 
 Consulta utilizada para obtener las 3 mejores películas:
+> **Note:** Para realizar esta consulta se han tenido en cuenta películas que han recibido al menos 100 valoraciones.
 
 ```
-SELECT m.movie_id, m.title, m.genres, AVG(r.rating) AS avg_rating
-FROM movies m
-JOIN ratings r ON m.movie_id = r.movie_id
-GROUP BY m.movie_id, m.title, m.genres
+SELECT m.title, AVG(r.rating) AS avg_rating, COUNT(*) AS total_ratings
+FROM ratings r
+JOIN movies m ON r.movie_id = m.movie_id
+GROUP BY m.title
+HAVING COUNT(*) >= 100
 ORDER BY avg_rating DESC
 LIMIT 3;
 ```
 
+![image](https://github.com/user-attachments/assets/b58da9c8-c8a9-4ed0-8581-3db503e99f67)
 
-
-Las 3 mejores películas según las calificaciones son Follow the Bitch, Smashing Time y One Little Indian, todas ellas con una valoración de 5.0.
+Las 3 mejores películas (con al menos 100 valoraciones) según las calificaciones son Seven Samurai (The Magnificent Seven), The Shawshank Redemptiony The Godfather, con una valoración de 4.56, 4.55 y 4.52, respectivamente.
 
 Consulta utilizada para obtener las 3 peores películas:
+> **Note:** Para realizar esta consulta se han tenido en cuenta películas que han recibido al menos 100 valoraciones.
 
 ```
-SELECT m.MovieID, m.Title, AVG(r.Rating) AS avg_rating
-FROM movies m
-JOIN ratings r ON m.MovieID = r.MovieID
-GROUP BY m.MovieID, m.Title
+SELECT m.title, AVG(r.rating) AS avg_rating, COUNT(*) AS total_ratings
+FROM ratings r
+JOIN movies m ON r.movie_id = m.movie_id
+GROUP BY m.title
+HAVING COUNT(*) >= 100
 ORDER BY avg_rating ASC
 LIMIT 3;
 ```
 
+![image](https://github.com/user-attachments/assets/26224197-977b-402a-a8d6-80d2a7fcbe60)
 
-
-Las 3 peores películas según las calificaciones son Hillbillys in a Haunted House, Elstree Calling y Little Indian, Big City, todas ellas con una valoración de 1.0.
+Las 3 peores películas (con al menos 100 valoraciones) según las calificaciones son Kazaam, Battlefield Earth y Pokemon the Movie, con una valoración de 1.47, 1.61, 1.62, respectivamente.
 
 <strong>4. ¿Hay alguna profesión en la que deberíamos enfocar nuestros esfuerzos en publicidad? ¿Por qué?</strong>
 
 Consulta utilizada:
 
 ```
-SELECT u.Occupation, COUNT(r.UserID) AS num_ratings
-FROM users u
-JOIN ratings r ON u.UserID = r.UserID
-GROUP BY u.Occupation
-ORDER BY num_ratings DESC;
+SELECT u.occupation, COUNT(*) AS total_ratings
+FROM ratings r
+JOIN users u ON r.user_id = u.user_id
+GROUP BY u.occupation
+ORDER BY total_ratings DESC
+LIMIT 1;
 ```
 
+![image](https://github.com/user-attachments/assets/6d5d3f28-1a9d-44d5-b480-b687d71b9750)
 
+La profesión con mayor número de valoraciones es la que se corresponde con el número 4. Si se consulta el archivo [README.txt](data/README.txt) se aprecia que es la profesión de "college/grad student".
 
 <strong>5. Se te ocurre algún otro insight valioso que pudiéramos extraer de los datos procesados? Cómo?</strong>
 
-Consulta utilizada:
+Una consulta interesante sería saber la relación entre la edad del usuario y las puntuaciones. La consulta que se ha utilizado es:
 
 ```
-...
+SELECT u.age, AVG(r.rating) AS avg_rating
+FROM ratings r
+JOIN users u ON r.user_id = u.user_id
+GROUP BY u.age
+ORDER BY u.age;
 ```
+
+Con estos resultados se puede llegar a las siguientes conclusiones:
 
 ### Ejercicio 2
 
