@@ -13,6 +13,17 @@ Para empezar, se abre la línea de comandos y se crea un directorio nuevo con el
 
 ![image](https://github.com/user-attachments/assets/e89e96fd-6210-4970-aa5a-47dc18cd5ba4)
 
+Se puede comprobar que los datos se encuentran almacenados correctamente mostrando el contenido de las primeras filas de cada archivo mediante los comandos:
+
+```
+head -n 5 ratings.dat
+head -n 5 users.dat
+head -n 5 movies.dat
+```
+
+![image](https://github.com/user-attachments/assets/cf042dee-ada7-4601-8f9d-5bdc1eddaf7a)
+
+
 Una vez los achivos se encuentran en el directorio creado, se debe garantizar que no haya problemas de permisos durante el desarrollo de la tarea. Para ello se garantizan permisos de lectura, escritura y ejecución a todos estos ficheros mediante los comandos que aparecen a continuación:
 
 ```
@@ -30,7 +41,7 @@ hive
 
 Una vez dentro de Hive, se crea la base de datos mediante los siguientes comandos:
 ```
-CREATE DATABASE ex1;
+CREATE DATABASE IF NOT EXIST ex1;
 SHOW DATABASES;
 USE ex1;
 ```
@@ -79,11 +90,11 @@ De forma similar a como se ha creado la tabla de películas se crea la tabla de 
 
 ```
 CREATE TABLE users (
-    UserID INT,
-    Gender STRING,
-    Age INT,
-    Occupation INT,
-    Zip-code STRING
+    user_id INT,
+    gender STRING,
+    age INT,
+    occupation INT,
+    zip_code STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe'
 WITH SERDEPROPERTIES ("field.delim"="::");
@@ -109,10 +120,10 @@ Por último, se crea la tercera de las tablas (ratings) con el siguiente comando
 
 ```
 CREATE TABLE ratings (
-    UserID INT,
-    MovieID INT,
-    Rating INT,
-    Timestamp INT
+    user_id INT,
+    movie_id INT,
+    rating INT,
+    timestamp INT
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe'
 WITH SERDEPROPERTIES ("field.delim"="::");
@@ -129,6 +140,10 @@ Una simple consulta permite comprobar que los datos están guardados correctamen
 ```
 SELECT * FROM ratings LIMIT 10;
 ```
+
+![image](https://github.com/user-attachments/assets/846b8c68-b854-4c38-9d8e-48e2e82e09c0)
+
+
 ### Ejercicio 1
 
 <strong>De cara a definir por qué genero apostar, identificar los influencers que pueden potenciar el marketing de MovieBuster y definir una estrategia de publicidad, el CEO te pide averiguar los siguientes datos del momento de mercado actúal:</strong>
@@ -138,15 +153,15 @@ SELECT * FROM ratings LIMIT 10;
 Consulta utilizada:
 
 ```
-SELECT m.MovieID, m.Title, m.Genres, COUNT(r.MovieID) AS num_reviews
-FROM movies m
-JOIN ratings r ON m.MovieID = r.MovieID
-GROUP BY m.MovieID, m.Title, m.Genres
-ORDER BY num_reviews DESC
+SELECT m.title, COUNT(*) AS num_ratings
+FROM ratings r
+JOIN movies m ON r.movie_id = m.movie_id
+GROUP BY m.title
+ORDER BY num_ratings DESC
 LIMIT 1;
 ```
 
-![image](https://github.com/user-attachments/assets/80545b32-5dab-4635-a7c3-e88a06e02b9e)
+![image](https://github.com/user-attachments/assets/aa41c802-b03c-45ae-9fe5-d652de82be58)
 
 La película con mayor número de opiniones es American Beauty con un total de 3428 opiniones recibidas.
 
@@ -155,14 +170,14 @@ La película con mayor número de opiniones es American Beauty con un total de 3
 Consulta utilizada:
 
 ```
-SELECT UserID, COUNT(*) AS num_ratings
+SELECT user_id, COUNT(*) AS total_reviews
 FROM ratings
-GROUP BY UserID
-ORDER BY num_ratings DESC
+GROUP BY user_id
+ORDER BY total_reviews DESC
 LIMIT 10;
 ```
 
-![image](https://github.com/user-attachments/assets/51056b81-3117-448e-adf6-3b5a0ed4ee52)
+![image](https://github.com/user-attachments/assets/e8d142b1-e2bd-44ed-97bb-75b2b75e5f1b)
 
 Los 10 ID de usuario que han publicado mayor número de reviews son 4169, 1680, 4277, 1941, 1181, 889, 3618, 2063, 1150 y 1015. 
 
@@ -171,15 +186,15 @@ Los 10 ID de usuario que han publicado mayor número de reviews son 4169, 1680, 
 Consulta utilizada para obtener las 3 mejores películas:
 
 ```
-SELECT m.MovieID, m.Title, m.Genres, AVG(r.Rating) AS avg_rating
+SELECT m.movie_id, m.title, m.genres, AVG(r.rating) AS avg_rating
 FROM movies m
-JOIN ratings r ON m.MovieID = r.MovieID
-GROUP BY m.MovieID, m.Title, m.Genres
+JOIN ratings r ON m.movie_id = r.movie_id
+GROUP BY m.movie_id, m.title, m.genres
 ORDER BY avg_rating DESC
 LIMIT 3;
 ```
 
-![image](https://github.com/user-attachments/assets/2696df5a-c828-4614-b3b6-629a60923c4c)
+
 
 Las 3 mejores películas según las calificaciones son Follow the Bitch, Smashing Time y One Little Indian, todas ellas con una valoración de 5.0.
 
@@ -194,7 +209,7 @@ ORDER BY avg_rating ASC
 LIMIT 3;
 ```
 
-![image](https://github.com/user-attachments/assets/423be053-3b32-4d4d-bed9-012d4c1e1200)
+
 
 Las 3 peores películas según las calificaciones son Hillbillys in a Haunted House, Elstree Calling y Little Indian, Big City, todas ellas con una valoración de 1.0.
 
