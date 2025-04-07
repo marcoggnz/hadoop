@@ -246,18 +246,78 @@ GROUP BY u.age
 ORDER BY u.age;
 ```
 
+![image](https://github.com/user-attachments/assets/3f22e729-2cd0-4527-9304-1bd0bf81419d)
+
 Con estos resultados se puede llegar a las siguientes conclusiones:
+
+| Edad  | Rating medio | Interpretación                                                |
+|-------|--------------|---------------------------------------------------------------|
+| <18   | 3.55         | Jóvenes valoran bien, aunque no destacan demasiado            |
+| 18-24 | 3.51         | Segmento joven adulto es el más exigente (rating más bajo)    |
+| 24-34 | 3.55         | Muy similar a los menores de 18                               |
+| 35-44 | 3.62         | Aumenta la puntuación. Quizás menos críticos o gustos amplios |
+| 44-49 | 3.64         | Más alta aún                                                  |
+| 50-55 | 3.71         | Mucho más positivos                                           |
+| >56   | 3.77         | Los más positivos de todos                                    |
 
 ### Ejercicio 2
 
 <strong>El CEO está preocupado con la eficiencia de las queries usadas para extraer los datos de los ejercicios prácticos #1 y #2 y exige poder ver estos resultados desde una web.</strong>
 
-...
-
 <strong>1. Implementa, a través de Sqoop, una BBDD relacional en MySQL que contenga al menos los datos de uno de los insights extraídos en el ejercicio práctico #1</strong>
 
-...
+Para relizar este ejercicio se ha elegido el insight "Top 10 de usuarios más activos en puntuaciones de películas" del ejercicio 1.
+
+Primero se vuelve a ejecutar la consulta guardándose el resultado en la tabla top_users:
+
+```
+CREATE TABLE top_users AS
+SELECT user_id, COUNT(*) AS num_ratings
+FROM ratings
+GROUP BY user_id
+ORDER BY num_ratings DESC
+LIMIT 10;
+```
+
+Mediante el siguiente comando, se confirma que la tabla ha sido creada correctamente:
+
+```
+SELECT * FROM top_users;
+
+```
+
+![image](https://github.com/user-attachments/assets/cc99ed0d-bfbf-469c-bdbd-e5fee474edc6)
+
+A continuación, se accede a my sql con el siguiente comando:
+
+```
+mysql -uroot -pcloudera
+```
+
+Y se crea una nueva database con el nombre 'ex1':
+```
+CREATE DATABASE ex1;
+```
+
+![image](https://github.com/user-attachments/assets/41cb158e-a369-45d8-98b9-85ce4d6ec813)
+
+Y se cambia el database al que se acaba de crear:
+
+```
+USE ex1;
+```
+
 
 <strong>2. Por qué hacemos esto y no accedemos directamente a los resultados del ejercicio #1?</strong>
 
-...
+Existen varias la razones para pensar que la mejor opción es exportar los datos a MySQL si se quieren visualizar en una aplicación web. En la siguiente tabla se muestran las caracter´isticas principales de HIVE/HDFS y MySQL (RDBMS):
+
+| Hive/HDFS  | MySQL/RDBMS                                                                                 |
+|------------|---------------------------------------------------------------------------------------------|
+| Diseñado para procesamiento batch en Big Data   | Diseñado para acceso rápido a datos estructurados      |
+| Altísima latencia para pequeñas queries| 	Muy baja latencia para búsquedas rápidas                       |
+| No apto para servir datos en tiempo real (web/API) | Ideal para servir resultados a una web o aplicación |
+| Gran capacidad de almacenamiento | Excelente integración con frontends y APIs                            |
+| No soporta bien updates/inserts frecuentes | Ideal para cambios dinámicos y transacciones                |
+
+Por tanto, mientras que Hive es ideal para procesamiento y análisis masivo, MySQL se comporta de manera más eficiente cuando se tienen que realizar consultas rápidas y servir datos en una web en tiempo real.
