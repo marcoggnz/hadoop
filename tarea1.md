@@ -21,8 +21,7 @@ head -n 5 users.dat
 head -n 5 movies.dat
 ```
 
-![image](https://github.com/user-attachments/assets/cf042dee-ada7-4601-8f9d-5bdc1eddaf7a)
-
+![image](https://github.com/user-attachments/assets/cb7fad58-26fd-4566-86e9-b7639b525b43)
 
 Una vez los achivos se encuentran en el directorio creado, se debe garantizar que no haya problemas de permisos durante el desarrollo de la tarea. Para ello se garantizan permisos de lectura, escritura y ejecución a todos estos ficheros mediante los comandos que aparecen a continuación:
 
@@ -76,14 +75,6 @@ Se puede asegurar que la copia se ha realizado correctamente:
 !dfs -ls /user/hive/warehouse/ex1.db/movies;
 ```
 
-o realizando una simple consulta a esta tabla:
-
-```
-SELECT * FROM movies LIMIT 10;
-```
-
-![image](https://github.com/user-attachments/assets/02a256f2-bfd0-4a74-99f0-a911269b1eec)
-
 ### Tabla Users
 
 De forma similar a como se ha creado la tabla de películas se crea la tabla de usuarios:
@@ -105,14 +96,6 @@ Esta tabla se encuentra en la ruta <code>/user/hive/warehouse/ex1.db</code>. A c
 ```
 !hadoop fs -put /home/cloudera/dh-course/dataset-exercise1/users.dat /user/hive/warehouse/exercise1.db/users;
 ```
-
-Mediante una consulta se asegura que los datos están almacenados correctamente en esta tabla:
-
-```
-SELECT * FROM users LIMIT 10;
-```
-
-![image](https://github.com/user-attachments/assets/ad5000d7-bd11-445b-b3e1-11aa85635704)
 
 ### Tabla Ratings
 
@@ -138,11 +121,12 @@ Esta tabla se almacena en la misma ruta que el resto de tablas <code>/user/hive/
 Una simple consulta permite comprobar que los datos están guardados correctamente:
 
 ```
+SELECT * FROM movies LIMIT 10;
+SELECT * FROM users LIMIT 10;
 SELECT * FROM ratings LIMIT 10;
 ```
 
-![image](https://github.com/user-attachments/assets/846b8c68-b854-4c38-9d8e-48e2e82e09c0)
-
+![image](https://github.com/user-attachments/assets/2992fa5d-4763-42f8-bcf0-3824f0cc5e2e)
 
 ### Ejercicio 1
 
