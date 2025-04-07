@@ -274,13 +274,13 @@ SELECT * FROM top_users;
 
 ![image](https://github.com/user-attachments/assets/cc99ed0d-bfbf-469c-bdbd-e5fee474edc6)
 
-A continuación, se accede a my sql con el siguiente comando:
+A continuación, se accede a MySQL con el siguiente comando:
 
 ```
 mysql -uroot -pcloudera
 ```
 
-Y se crea una nueva database con el nombre 'ex1':
+Y se crea una nueva database con el nombre 'ex1' en MySQL:
 ```
 CREATE DATABASE ex1;
 ```
@@ -292,7 +292,27 @@ Y se cambia el database al que se acaba de crear:
 ```
 USE ex1;
 ```
+ 
+Dentro de este database se crea la tabla top_users:
 
+```
+CREATE TABLE top_users (
+  user_id INT,
+  num_ratings INT
+);
+```
+
+Por último, con la ayuda de sqoop se exporta la tabla desde Hive a MySQL ejecutando el siguiente comando en el sistema de archivos local:
+ 
+```
+sqoop export --connect jdbc:mysql://localhost/ex1 --table top_users --export-dir /user/hive/warehouse/ex1.db/top_users_export --input-fields-terminated-by '\t' --username root --password cloudera --num-mappers 1 
+```
+
+Una vez realizada la exportación, se verifican los resultados en MySQL:
+
+![image](https://github.com/user-attachments/assets/264f054a-46ab-42d9-9940-e2df47164b61)
+
+Ya estaría creada correctamente la tabla en MySQL. El siguiente paso sería programar una pequeña app en Python o Node.js para poder conectarse a MySQL y mostrar los resultados, o bien conectarse desde una herramienta de visualización como Grafana.
 
 <strong>2. Por qué hacemos esto y no accedemos directamente a los resultados del ejercicio #1?</strong>
 
