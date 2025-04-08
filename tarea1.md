@@ -13,7 +13,7 @@ Para empezar, se abre la línea de comandos y se crea un directorio nuevo con el
 
 ![image](https://github.com/user-attachments/assets/e89e96fd-6210-4970-aa5a-47dc18cd5ba4)
 
-Se puede comprobar que los datos se encuentran almacenados correctamente mostrando el contenido de las primeras filas de cada archivo mediante los comandos:
+Se puede comprobar que los datos se encuentran almacenados correctamente mostrando el contenido de las primeras filas de cada archivo mostrando las primeras filas de cada archivo:
 
 ```
 head -n 5 ratings.dat
