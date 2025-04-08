@@ -63,7 +63,7 @@ WITH SERDEPROPERTIES ("field.delim"="::");
 
 Los tres archivos de datos tienen dos puntos (::) como delimitadores de columnas, por tanto, hay que tener esto en cuenta a la hora de crear las tablas.
 
-A continuación, se debe mover el fichero <code> movies.dat</code> del sistema de ficheros local a Hadoop mediante el comando:
+A continuación, se debe mover el fichero <code> movies.dat</code> del sistema de ficheros local a HDFS mediante el comando:
 
 ```
 hdfs dfs -put /home/cloudera/dh-course/dataset-hadoop/movies.dat /user/cloudera/movies/
@@ -85,7 +85,7 @@ ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe'
 WITH SERDEPROPERTIES ("field.delim"="::");
 ```
 
-Esta tabla se encuentra en la ruta <code>/user/hive/warehouse/ex1.db</code>. A continuación, se copia el archivo que contiene los datosa del entorno Linux al entorno Hive:
+Esta tabla se encuentra en la ruta <code>/user/hive/warehouse/ex1.db</code>. A continuación, se copia el archivo que contiene los datos desde el directorio local al entorno HDFS:
 
 ```
 hdfs dfs -put /home/cloudera/dh-course/dataset-hadoop/users.dat /user/cloudera/users/
@@ -112,7 +112,7 @@ Esta tabla se almacena en la misma ruta que el resto de tablas <code>/user/hive/
 hdfs dfs -put /home/cloudera/dh-course/dataset-hadoop/ratings.dat /user/cloudera/ratings/
 ```
 
-Para terminar la preparación, se deben cargar los datos a las tablas de Hive mediante los siguientes comandos:
+Para terminar la preparación, se deben cargar los datos en las tablas de Hive mediante los siguientes comandos:
 
 ```
 LOAD DATA INPATH '/user/cloudera/movies/movies.dat' INTO TABLE movies;
