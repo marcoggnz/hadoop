@@ -38,7 +38,7 @@ Una vez se ha preparado el entorno, se debe crear primero la base de datos en Hi
 hive
 ```
 
-Una vez dentro de Hive, se crea la base de datos mediante los siguientes comandos:
+Una vez dentro de Hive, se crea la base de datos:
 ```
 CREATE DATABASE IF NOT EXIST ex1;
 SHOW DATABASES;
