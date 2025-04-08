@@ -53,9 +53,9 @@ Para la creación de la tabla de películas, se utilizan los siguientes comandos
 
 ```
 CREATE TABLE movies (
-    MovieID INT,
-    Title STRING,
-    Genres STRING
+    movie_id INT,
+    title STRING,
+    genres STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe'
 WITH SERDEPROPERTIES ("field.delim"="::");
