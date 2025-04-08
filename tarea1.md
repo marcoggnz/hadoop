@@ -6,8 +6,8 @@ Como aparece mencionado en el [README.md](README.md) esta tarea se ha realizado 
 
 Para empezar, se abre la línea de comandos y se crea un directorio nuevo con el nombre <code>dataset-hadoop</code> en la ruta <code>/home/cloudera/dh-course/dataset-hadoop</code>. A continuación, se copian los tres archivos que se van a utilizar a lo largo de la tarea desde el repositorio https://github.com/dgarciaesc/sample_dataset:
 
-* movies.dat: contiene información sobre
-* users.dat:
+* movies.dat: contiene información sobre películas, incluyendo su ID, título, y género al que pertenecen. 
+* users.dat: contiene información de los usuarios que publican calificaciones sobre las películas. Esta base de datos incluye el ID de cada usuario, género, edad, profesión, y código postal de residencia.
 * ratings.dat: contiene información sobre el ID de usuario, ID de la película, la calificación y la variable timestamp.
 > **Note:** La información detallada sobre la estructura y las variables de los 3 ficheros se encuentra explicada en [README.txt](https://github.com/marcoggnz/hadoop/blob/main/data/README.txt).
 
